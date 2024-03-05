@@ -11,7 +11,7 @@ class _HomePageState extends State<HomePage> {
   static const yellowColor = Color.fromARGB(255, 254, 254, 155);
 
   Widget _createCoin(BuildContext context, int index) {
-    return Block();
+    return CryptoCurret();
   }
 
   Widget _divider(BuildContext context, int index) {
@@ -38,20 +38,25 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class Block extends StatefulWidget {
-  const Block({super.key});
+class CryptoCurret extends StatefulWidget {
+  const CryptoCurret({super.key});
 
   @override
-  State<Block> createState() => _BlockState();
+  State<CryptoCurret> createState() => _CryptoCurretState();
 }
 
-class _BlockState extends State<Block> {
+class _CryptoCurretState extends State<CryptoCurret> {
   static const yellowColor = Color.fromARGB(255, 254, 254, 155);
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
     return ListTile(
+      onTap: () {
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => const CoinScreen()));
+      },
       leading: const Icon(
         Icons.monetization_on_outlined,
         color: yellowColor,
@@ -67,6 +72,21 @@ class _BlockState extends State<Block> {
       subtitle: Text(
         '1000\$',
         style: theme.textTheme.titleSmall,
+      ),
+    );
+  }
+}
+
+class CoinScreen extends StatelessWidget {
+  const CoinScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'Bitcoin',
+        ),
       ),
     );
   }
