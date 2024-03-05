@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class CryptoList extends StatefulWidget {
+  const CryptoList({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<CryptoList> createState() => _CryptoListState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _CryptoListState extends State<CryptoList> {
   static const yellowColor = Color.fromARGB(255, 254, 254, 155);
 
   Widget _createCoin(BuildContext context, int index) {
-    return CryptoCurret();
+    return BuilListTile();
   }
 
   Widget _divider(BuildContext context, int index) {
@@ -38,14 +38,14 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class CryptoCurret extends StatefulWidget {
-  const CryptoCurret({super.key});
+class BuilListTile extends StatefulWidget {
+  const BuilListTile({super.key});
 
   @override
-  State<CryptoCurret> createState() => _CryptoCurretState();
+  State<BuilListTile> createState() => _BuilListTileState();
 }
 
-class _CryptoCurretState extends State<CryptoCurret> {
+class _BuilListTileState extends State<BuilListTile> {
   static const yellowColor = Color.fromARGB(255, 254, 254, 155);
 
   @override

@@ -28,7 +28,12 @@ class CryptoCurrentList extends StatelessWidget {
           ),
         ),
       ),
-      home: const HomePage(),
+      routes: <String, WidgetBuilder>{
+    '/': (contex) {
+    return CryptoList();
+    },
+    '/coin': (context) => CoinScreen(),
+    },
     );
   }
 }
