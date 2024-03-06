@@ -105,7 +105,6 @@ class _CoinScreenState extends State<CoinScreen> {
     setState(() {});
     super.didChangeDependencies();
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
