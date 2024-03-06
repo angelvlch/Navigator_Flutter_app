@@ -52,7 +52,6 @@ class _CryptoListState extends State<CryptoList> {
 
 class BuilListTile extends StatelessWidget {
   const BuilListTile({super.key, required this.nameCoin});
-
   final String nameCoin;
   static const yellowColor = Color.fromARGB(255, 254, 254, 155);
 
@@ -86,7 +85,6 @@ class BuilListTile extends StatelessWidget {
     );
   }
 }
-
 class CoinScreen extends StatefulWidget {
   const CoinScreen({super.key});
 
