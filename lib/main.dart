@@ -12,7 +12,7 @@ class CryptoCurrentList extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         listTileTheme: const ListTileThemeData(
-          iconColor: Colors.white54,
+          iconColor: Color.fromARGB(137, 230, 52, 52),
         ),
         dividerColor: Colors.white10,
         scaffoldBackgroundColor: Color.fromRGBO(38, 34, 34, 0.93),
