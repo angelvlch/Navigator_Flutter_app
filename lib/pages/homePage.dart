@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 class CryptoList extends StatefulWidget {
@@ -9,9 +11,19 @@ class CryptoList extends StatefulWidget {
 
 class _CryptoListState extends State<CryptoList> {
   static const yellowColor = Color.fromARGB(255, 254, 254, 155);
+  List<String> coins = [
+    'Ethereum',
+    'Bitcoint',
+    'Litecoin',
+    'Tether',
+    'Stellar Lumens',
+    'Binance Coin',
+    'Cardano',
+    'Solana'
+  ];
 
   Widget _createCoin(BuildContext context, int index) {
-    return BuilListTile();
+    return BuilListTile(nameCoin: coins[index]);
   }
 
   Widget _divider(BuildContext context, int index) {
@@ -31,21 +43,17 @@ class _CryptoListState extends State<CryptoList> {
       ),
       body: ListView.separated(
         separatorBuilder: _divider,
-        itemCount: 10,
+        itemCount: coins.length,
         itemBuilder: _createCoin,
       ),
     );
   }
 }
 
-class BuilListTile extends StatefulWidget {
-  const BuilListTile({super.key});
+class BuilListTile extends StatelessWidget {
+  const BuilListTile({super.key, required this.nameCoin});
 
-  @override
-  State<BuilListTile> createState() => _BuilListTileState();
-}
-
-class _BuilListTileState extends State<BuilListTile> {
+  final String nameCoin;
   static const yellowColor = Color.fromARGB(255, 254, 254, 155);
 
   @override
@@ -54,8 +62,10 @@ class _BuilListTileState extends State<BuilListTile> {
 
     return ListTile(
       onTap: () {
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => const CoinScreen()));
+        Navigator.of(context).pushNamed(
+          '/coin',
+          arguments: nameCoin,
+        );
       },
       leading: const Icon(
         Icons.monetization_on_outlined,
@@ -66,7 +76,7 @@ class _BuilListTileState extends State<BuilListTile> {
         Icons.arrow_forward_rounded,
       ),
       title: Text(
-        'Bitcoin',
+        nameCoin,
         style: theme.textTheme.bodyMedium,
       ),
       subtitle: Text(
@@ -77,17 +87,42 @@ class _BuilListTileState extends State<BuilListTile> {
   }
 }
 
-class CoinScreen extends StatelessWidget {
+class CoinScreen extends StatefulWidget {
   const CoinScreen({super.key});
+
+  @override
+  State<CoinScreen> createState() => _CoinScreenState();
+}
+
+class _CoinScreenState extends State<CoinScreen> {
+  String? coinName;
+
+  @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    final args = ModalRoute.of(context)?.settings.arguments;
+    // if (args == null) {
+    //   log("You");
+    //   return;
+    // }
+    // if (args is! String) {
+    //   log("You");
+    //   return;
+    // }
+    assert(args != null && args is String, 'error');
+    coinName = args as String;
+    // setState(() {
+    //
+    // });
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Bitcoin',
+        title:   Text(coinName ?? '....'),
         ),
-      ),
     );
   }
 }
