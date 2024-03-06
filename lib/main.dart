@@ -1,5 +1,5 @@
+import 'package:crypto/router/router.dart';
 import 'package:flutter/material.dart';
-import 'pages/homePage.dart';
 
 void main() => runApp(const CryptoCurrentList());
 
@@ -28,12 +28,7 @@ class CryptoCurrentList extends StatelessWidget {
           ),
         ),
       ),
-      routes: <String, WidgetBuilder>{
-    '/': (contex) {
-    return CryptoList();
-    },
-    '/coin': (context) => CoinScreen(),
-    },
+      routes: routes,
     );
   }
 }
