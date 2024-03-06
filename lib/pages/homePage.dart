@@ -64,7 +64,7 @@ class BuilListTile extends StatelessWidget {
       onTap: () {
         Navigator.of(context).pushNamed(
           '/coin',
-          arguments: nameCoin,
+          // arguments: nameCoin,
         );
       },
       leading: const Icon(
@@ -99,21 +99,10 @@ class _CoinScreenState extends State<CoinScreen> {
 
   @override
   void didChangeDependencies() {
-    // TODO: implement didChangeDependencies
     final args = ModalRoute.of(context)?.settings.arguments;
-    // if (args == null) {
-    //   log("You");
-    //   return;
-    // }
-    // if (args is! String) {
-    //   log("You");
-    //   return;
-    // }
     assert(args != null && args is String, 'error');
     coinName = args as String;
-    // setState(() {
-    //
-    // });
+    setState(() {});
     super.didChangeDependencies();
   }
 
